@@ -1,0 +1,1 @@
+let baseUri = "http://localhost/Cooldown";

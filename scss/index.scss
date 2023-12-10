@@ -1,0 +1,2694 @@
+// Mes couleurs la
+
+@font-face {
+    font-family: "titre";
+    src: url(../ressources/font/Crucial-Medium.otf);
+}
+
+@font-face {
+    font-family: "texte";
+    src: url(../ressources/font/futura_medium_bt.ttf);
+}
+
+$one:red;
+$two:#D4D4D4;
+$three:#A4A4A4;
+$four:#929292;
+$five:#E8E8E8;
+$green:#00d111;
+$orange:#e8aa00;
+$red:#c70000;
+
+@mixin resetMargin{
+    margin: 0;
+    padding: 0;
+}
+
+@mixin display{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin border($value){
+    border: ($value) solid black;
+    border-left: ($value)*3 solid black;
+}
+
+@mixin state($color){
+    background-color: ($color);
+    border: 5px solid black;
+    border-left: 15px;
+}
+
+@mixin statusactu{
+    width: 1.3rem;
+    height: 1.3rem;
+    border : 2px solid black;
+    position: absolute;
+    z-index: 99;
+    bottom: 0;
+    right: 0;
+}
+
+.red{
+    color: $one;
+}
+
+*{
+    scroll-behavior: smooth;
+    transition: .5s;
+}
+
+body{
+    @include resetMargin();  
+}
+
+.containerAll{
+    height: 100vh;
+    background-image: url(../ressources/marbre.jpeg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    font-family: "texte";
+    @include resetMargin();
+}
+
+.containerOne{
+    background-color: rgba($color: #000000, $alpha: .25);
+    overflow: hidden;
+    width: 25%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    .containerMobile{
+        display: none;
+    }
+    .containerSearchBar{
+        width: 100%;
+        height: 15%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .searchBar{
+            width: 80%;
+            height: 4rem;
+            background-color: $four;
+            @include border(4px);
+            @include display;
+            text-align: center;
+            font-size: 25px;
+        }
+        ::placeholder{
+            font-family: "texte";
+            color: black;
+            text-align: center;
+            opacity: 1;
+            letter-spacing: .2rem;
+        }
+        .containerResearch{
+            position: relative;
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            #searchResult{
+                width: 70%;
+                border-top: 2px solid black ;
+                border-left: 12px solid black;
+                border-right: 4px solid black;
+                border-bottom: 2px solid black;
+                position: absolute;
+                top: 0;
+                transform: translateY(-4px);
+                .searchItem{
+                    width: 100%;
+                    background-color: $three;
+                    height: 3rem;
+                    padding: .5rem 0rem;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                    cursor: pointer;
+                    h2{
+                        font-size: 1.3rem;
+                        font-family: "titre";
+                    }
+                    img{
+                    max-height: 90%;
+                    @include border(2px);
+                    margin-left: 1rem;
+                    }
+                    .etat0{
+                        width: 1rem;
+                        height: 1rem;
+                        border: 2px solid black;
+                        background-color: $green;
+                        margin-right: 1rem;
+                    }
+                    .etat1{
+                        width: 1rem;
+                        height: 1rem;
+                        border: 2px solid black;
+                        background-color: $orange;
+                        margin-right: 1rem;
+                    }
+                    .etat2{
+                        width: 1rem;
+                        height: 1rem;
+                        border: 2px solid black;
+                        background-color: $red;
+                        margin-right: 1rem;
+                    }
+                }
+            }
+        }
+    }
+    .containerButtonsMenu{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .buttonMenu{
+            height: 3.2rem;
+            background-color: $two;
+            margin-bottom: 1rem;
+            display: flex;
+            flex-direction: row;
+            width: 80%;
+            @include border(3px);
+            cursor: pointer;
+            .containerImage{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 25%;
+                img{
+                    height: 100%;
+                    transition: 1s;
+                }
+            }
+            .containerText{
+                letter-spacing: normal;
+                display: flex;
+                align-items: center;
+                text-align: left;
+                width: 75%;
+                p{   
+                    padding-left: 1rem;
+                    width: 75%;
+                }
+            }
+        }
+        .Search{
+            background-color: $four;
+            display: none;
+            .containerImage{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 25%;
+                img{
+                    height: 100%;
+                    transition: 1s;
+                }
+            }
+        }
+        .buttonMenu:hover{
+            img{
+                transform: rotate(5deg) translateX(.2rem) scale(2);
+            }
+        }
+    }
+    #containerMiniProfil{
+    width: 100%;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+    align-items: center;
+    font-family: "titre";
+    position: absolute;
+    bottom: 0;
+    #timerRestant{
+        width: 75%;
+        text-align: center;
+        padding: .5rem 0rem;
+        background-color: $one;
+        color: white;
+        font-size: 2rem;
+        @include border(4px);
+        margin-bottom: -27px;
+        transition: .85s;
+        height: 30px;
+        cursor: pointer;
+    }
+    #timerRestant:hover{
+        margin-bottom: -5px;
+    }
+    #timerRestantMobile{
+        height: 2.8rem;
+        width: 2.8rem;
+        text-align: center;
+        background-color: $one;
+        color: white;
+        font-size: 2rem;
+        @include border(4px);
+        @include display;
+        display: none;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+    #miniProfil{
+        width: 80%;
+        height: 70px;
+        background-color: $four;
+        @include border(4px);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        overflow: hidden;
+        .photo{
+            width: 25%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img{
+                @include border(2px);
+                height: 80%;
+                cursor: pointer;
+            }
+            .stat1{
+                background-color: $orange;
+                width: 1rem;
+                height: 1rem;
+                border : 2px solid black;
+                display: none;
+            }
+            .stat2{
+                background-color: $red;
+                width: 1rem;
+                height: 1rem;
+                border : 2px solid black;
+                display: none;
+            }
+            .stat0{
+                background-color: $green;
+                width: 1rem;
+                height: 1rem;
+                border : 2px solid black;
+                display: none;
+            }
+        }
+        .pseudoEtStatus{
+            width: 65%;
+            height: 70%;
+            display: flex;
+            position: relative;
+            transition: .8s;
+            .pseudo{
+                height: 100%;
+                padding: 0rem .8rem;
+                font-size: 1.5rem;
+                display: flex;
+                letter-spacing: normal;
+                align-items: center;
+                cursor: pointer;
+            }
+            .status{
+                position: absolute;
+                width: 100%;
+                height: 50%;
+                display: flex;
+                flex-direction: row;
+                bottom: 0;
+                justify-content: space-evenly;
+                margin-bottom: -30px;
+                #actif{
+                    width: 20%;
+                    height: 100%;
+                    background-color: $green;
+                    opacity: 1;
+                    cursor: pointer;
+                    opacity: 0.5;
+                }
+                #inactif{
+                    width: 20%;
+                    height: 100%;
+                    background-color: $orange;
+                    opacity: .8;
+                    cursor: pointer;
+                    opacity: 0.5;
+                }
+                #absent{
+                    width: 20%;
+                    height: 100%;
+                    background-color: $red;
+                    opacity: .8;
+                    cursor: pointer;
+                    opacity: 0.5;
+                }
+                .active{
+                    opacity: 1!important;
+                    transform: translateY(-8px);
+                }
+            }
+        }
+        .deco{
+            font-size: 2rem;
+            width: 10%;
+            text-align: center;
+            color: darkred;
+            cursor: pointer;
+            padding-right: .2rem;
+            font-size: 1.4rem;
+            transition: .6s;
+            font-family: "texte";
+        }
+        .deco:hover{
+            font-size: 2rem;
+        }
+    }
+    #miniProfil:hover{
+        .pseudoEtStatus{
+            .status{
+                #actif{
+                    transform: translateY(-8px);
+                    transition: .6s;
+                }
+                #inactif{
+                    transform: translateY(-8px);
+                    transition: .6s;
+                }
+                #absent{
+                    transform: translateY(-8px);
+                    transition: .6s;
+                }
+            }
+        }
+    }
+   } 
+}
+
+// Page d'acceuil
+
+#containerTwo{
+    width: 43%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+#haut{        
+        width: 100%;
+    #sendMessage{
+        background-color: rgba($color: #000000, $alpha: .25);
+        width: 100%;
+        padding: 1.5rem 0rem;
+        @include display;
+        .containPrevTweet{
+            width: 80%;
+            height: 100%;
+            background-color: $four;
+            display: flex;
+            flex-direction: column;
+            .photoEtInfo{
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                height: 70%;
+                .photo{
+                    width: 6rem;
+                    position: relative;
+                    img{
+                        width: 100%;
+                        top: 0;
+                        position: absolute;
+                        transform: translateX(-15px) translateY(-5px);
+                        @include border(3px);
+                        z-index: 98;
+                        cursor: pointer;
+                    }
+                }
+                .containerPseudoEtTweet{
+                         width: 80%;
+                        height: 100%;
+                        font-size: .6rem;
+                        padding: .5rem 1.2rem;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: start;
+                    .pseudoStatut{
+                        @include display;
+                        h1{
+                            font-family: "titre";
+                            font-size: 1.4rem;
+                            @include resetMargin();
+                            letter-spacing: normal;
+                            cursor: pointer;
+                        }
+                        .stat1{
+                            width: .7rem;
+                            height: .7rem;
+                            border: 2px solid black;
+                            margin-left: .7rem;
+                            background-color: $orange;
+                        }
+                        .stat2{
+                            width: .7rem;
+                            height: .7rem;
+                            border: 2px solid black;
+                            margin-left: .7rem;
+                            background-color: $red;
+                        }
+                        .stat0{
+                            width: .7rem;
+                            height: .7rem;
+                            border: 2px solid black;
+                            margin-left: .7rem;
+                            background-color: $green;
+                        }
+                    }
+                    .Mississive{
+                        width: 100%;
+                        height: 100%;
+                        margin: .5rem 0rem;
+                        textarea{
+                            letter-spacing: normal;
+                            background-color: $four;
+                            border: none;
+                            text-align: justify;
+                            @include resetMargin();
+                            width: 100%;
+                            height: 90%;
+                            display: block;
+                            align-items: start;
+                            resize: none;
+                        }
+                        textarea::placeholder{
+                            font-family: "texte";
+                            color:black;
+                            font-size: 1rem;
+                        }
+                        #previewImage{
+                            width: 100%;
+                        }
+                    }
+                    .preview{
+                        position: relative;
+                        #remove-photo{
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            margin: 1.5rem;
+                            color: white;
+                            font-size: .8rem;
+                            background-color: $one;
+                            @include border(2px);
+                            font-family: "texte";
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+            .buttonTweet{
+                height: 30%;
+                width: 100%;
+                text-align: center;
+                position: relative;
+                .missiver{
+                    @include border(3px);
+                    position: absolute;
+                    width: 10rem;
+                    height: 2rem;
+                    background-color: $one;
+                    right: 0;
+                    bottom: 0;
+                    @include display;
+                    @include resetMargin;
+                    transform: translateX(15px) translateY(15px);
+                    cursor: pointer;
+                    p{
+                        color: white;
+                        font-family: "texte";
+                    }
+                }
+                .uploadPhoto{
+                    @include border(3px);
+                    position: absolute;
+                    width: 2rem;
+                    height: 2rem;
+                    right: 0;
+                    bottom: 0;
+                    background-color: $four;
+                    transform: translateX(-10.5rem) translateY(15px);
+                    img{
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+#milieu{
+    width: 100%;
+    #separation{
+        background-color: black;
+        width: 100%;
+        height: 4px;
+    }
+}
+#bas{
+    height: auto;
+    border-right: 12px solid black;
+    border-left: 4px solid black;
+    .containTweet{
+        width: 100%;
+        #containerTweet{
+        #containerTweet::-webkit-scrollbar{
+            display: none;     
+        }
+            .containMissive{
+                margin: 1rem;
+                background-color: $five;
+                height: auto;
+                padding: 1rem;
+                @include border(3px);
+                display: flex;
+                flex-direction: row;
+                margin-bottom: 1rem;
+                .pp{
+                    max-height: 100%;
+                    img{
+                        display: block;
+                        width: 5rem;
+                        @include border(3px);
+                        cursor: pointer;
+
+                    }
+                }
+                .infoMissive{
+                    width: 100%;
+                    height: 100%;
+                    padding-left: 1rem;
+                    letter-spacing: normal;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    .upLine{
+                        width: 100%;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: space-between;
+                        .pseudoEtStatus{
+                            width: 100%;
+                            font-family: "titre";
+                            font-size: 1.5rem;
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            .stat1{
+                                width: .7rem;
+                                height: .7rem;
+                                border: 2px solid black;
+                                margin-left: .7rem;
+                                background-color: $orange;
+                            }
+                            .stat2{
+                                width: .7rem;
+                                height: .7rem;
+                                border: 2px solid black;
+                                margin-left: .7rem;
+                                background-color: $red;
+                            }
+                            .stat0{
+                                width: .7rem;
+                                height: .7rem;
+                                border: 2px solid black;
+                                margin-left: .7rem;
+                                background-color: $green;
+                            }
+                            p{
+                                margin: 0px;
+                                cursor: pointer;
+                            }
+                        }
+                        .delTweet{
+                            color: white;
+                            font-size: .8rem;
+                            background-color: $one;
+                            @include border(2px);
+                            padding: .1rem .3rem;
+                            font-family: "texte";
+                            cursor: pointer;
+                        }
+                    }
+                    .missive{
+                        width: 100%;
+                        height: 65%;
+                        font-size: .8rem;
+                        text-align: justify;
+                        word-wrap: break-word;
+                    }
+                    .reactDate{
+                        width: 100%;
+                        height: 20%;
+                        padding-top: 1rem;
+                        .containReact{
+                            width: 100%;
+                            height: 100%;
+                            display: flex;
+                            flex-direction: row;
+                            .reactions{
+                                width: 80%;
+                                display: flex;
+                                flex-direction: row;
+                                .reaction{
+                                    display: flex;;
+                                    flex-direction: row;
+                                    align-items: center;
+                                    padding-right: 1.5rem;
+                                    .logo{
+                                        width: 2rem;
+                                        padding-right: .2rem;
+                                        height: 1rem;
+                                        cursor: pointer;
+                                        img{
+                                            max-width: 100%;
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;
+                                            cursor: pointer;
+                                        }
+                                    }
+                                    .message{
+                                        height: 1rem;
+                                    }
+                                    .retweet{
+                                        height: 1rem;
+                                    }
+                                    .like{
+                                        
+                                    }
+                                    .logo:hover{
+                                        transform: scale(1.2);
+                                        transition: .8s;
+                                    }
+                                    .textmessage{
+                                        transform: translateX(-3px);
+                                    }
+                                    .textlike{
+                                        transform: translateX(-5px);
+                                    }
+                                }
+                            }
+                            .date{
+                                width: 40%;
+                                text-align: right;
+                                float: right;
+                                font-size: .8rem;
+                                font-weight: bold;
+                                display: flex;
+                                flex-direction: column;
+                                font-family: "texte";
+                                p{
+                                    margin: 0px;
+                                    font-family: "texte";
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .separation2{
+            float: right;
+            width: 12px;
+            background-color: black;
+        }
+        }
+        .endTweet{
+            background-color:rgba($color: #000000, $alpha: .25);
+            height: 100%;
+            border-top: 4px solid black;
+        }
+    }
+}
+
+// Commentaires
+
+#containerTwo{
+    #haut{
+        width: 100%;
+        height: auto;
+        .partieHaute{
+            width: 100%;
+            height: auto;
+            .fullTweet{
+                background-color: rgba($color: #000000, $alpha: .25);
+                width: 100%;
+                height: 100%;
+                .everything{
+                    height: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    padding: 2rem 0rem;
+                    width: 100%;
+                    .profilPic{
+                        height: 5rem;
+                        img{
+                            max-height: 100%;
+                            @include border(3px);
+                        }
+                    }
+                    .containerAllText{
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    padding: 1rem;
+                    .allText{
+                        display: flex;
+                        flex-direction: column;
+                        align-items: start;
+                        justify-content: center;
+                        width: 100%;
+                        .pseudoEtatEtDel{
+                            width: 100%;
+                            height: 15%;
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            justify-content: space-between;
+                            .pseudoEtEtatUser{
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            width: 100%;
+                                    h1{
+                                        font-family: "titre";
+                                        font-size: 1.4rem;
+                                        @include resetMargin();
+                                        letter-spacing: normal;
+                                        cursor: pointer;
+                                    }
+                                    .stat1{
+                                        width: .7rem;
+                                        height: .7rem;
+                                        border: 2px solid black;
+                                        margin-left: .7rem;
+                                        background-color: $orange;
+                                    }
+                                    .stat2{
+                                        width: .7rem;
+                                        height: .7rem;
+                                        border: 2px solid black;
+                                        margin-left: .7rem;
+                                        background-color: $red;
+                                    }
+                                    .stat0{
+                                        width: .7rem;
+                                        height: .7rem;
+                                        border: 2px solid black;
+                                        margin-left: .7rem;
+                                        background-color: $green;
+                                    }
+                            }
+                            .delTweet{
+                                color: white;
+                                font-size: .8rem;
+                                background-color: $one;
+                                @include border(2px);
+                                padding: .1rem .3rem;
+                                font-family: "texte";
+                                cursor: pointer;
+                            }
+                        }
+                        .contenuTweet{
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            text-align: justify;
+                            height: 65%;
+                            width: 100%;
+                            font-size: 1rem;
+                            word-break: break-all;
+                            padding: .8rem 0rem;
+                        }
+                        .reactTweet{
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            height: 20%;
+                            width: 100%;
+                            .reactions{
+                                display: flex;;
+                                flex-direction: row;
+                                justify-content: start;
+                                align-items: center;
+                                padding-right: 1.5rem;
+                                width: 100%;
+                                .commentaire, .retweet, .like{
+                                    display: flex;
+                                    flex-direction: row;
+                                    align-items: center;
+                                    padding-right: 1.5rem;
+                                    .logo{
+                                        width: 2rem;
+                                        padding-right: .2rem;
+                                        height: 1rem;
+                                        cursor: pointer;
+                                        img{
+                                            max-width: 100%;
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;
+                                            cursor: pointer;
+                                        }
+                                    }
+                                    .logo:hover{
+                                        transform: scale(1.2);
+                                        transition: .8s;
+                                    }
+                                    .textmessage{
+                                        transform: translateX(-3px);
+                                    }
+                                    .textlike{
+                                        transform: translateX(-5px);
+                                    }
+                                }
+                            }
+                            p{
+                                margin: 0px;
+                                font-family: "texte";
+                                font-weight: bold;
+                                text-align: right;
+                                width: 6.5rem;
+                            }
+                        }
+                    }
+                    }
+                 }
+            }
+        }
+    }
+    #milieu{
+        width: 100%;
+        .reponse{
+            border-left: 4px solid black;
+            border-right: 12px solid black;
+            height: 4rem;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-evenly;
+            background-color: rgba($color: #000000, $alpha: .15);
+            padding: .5rem;
+            border-top: 4px solid black;
+            border-bottom: 2px solid black;
+            img{    
+                height: 90%;
+                @include border(2px);
+            }
+            #commInput{
+                background: none;
+                border: none;
+                text-align: justify;
+                @include resetMargin();
+                width: 80%;
+                height: 90%;
+                display: block;
+                align-items: start;
+                resize: none;
+                padding: 0rem 1rem;
+            }
+            .bouton{
+                background-color: $one;
+                @include border(3px);
+                color: white;
+                padding: .3rem .2rem;
+                font-size: .8rem;
+                letter-spacing: .5px;
+                width: 6rem;
+                height: 1.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
+        }
+    }
+    #bas{
+        height: 100%;
+        height: auto;
+        .partieBasse{
+            display: flex;
+            flex-direction: row;
+            background-color: $five;
+            .separation{
+                height: 100%;
+                width: 4px;
+                background-color: black;
+            }
+            .fullTweet{
+                width: 100%;
+                margin: 2rem 1rem;
+                .everything{
+                    display: flex;
+                    flex-direction: row;
+                    margin: 1rem;
+                    .profilPic{
+                        width: 8rem;
+                        img{
+                            width: 80%;
+                            @include border(3px);
+                        }
+                    }
+                    .containerAllText{
+                    display: flex;
+                    align-items: center;
+                    max-width: 100%;
+                    padding: .2rem;
+                    .allText{
+                        display: flex;
+                        flex-direction: column;
+                        align-items: start;
+                        justify-content: center;
+                        width: 100%;
+                        .pseudoEtatEtDel{
+                            width: 100%;
+                            height: 15%;
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            justify-content: space-between;
+                            .pseudoEtEtatUser{
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            width: 100%;
+                                    h1{
+                                        font-family: "titre";
+                                        font-size: 1.4rem;
+                                        @include resetMargin();
+                                        letter-spacing: normal;
+                                        cursor: pointer;
+                                    }
+                                    .stat1{
+                                        width: .7rem;
+                                        height: .7rem;
+                                        border: 2px solid black;
+                                        margin-left: .7rem;
+                                        background-color: $orange;
+                                    }
+                                    .stat2{
+                                        width: .7rem;
+                                        height: .7rem;
+                                        border: 2px solid black;
+                                        margin-left: .7rem;
+                                        background-color: $red;
+                                    }
+                                    .stat0{
+                                        width: .7rem;
+                                        height: .7rem;
+                                        border: 2px solid black;
+                                        margin-left: .7rem;
+                                        background-color: $green;
+                                    }
+                            }
+                            .delTweet{
+                                color: white;
+                                font-size: .8rem;
+                                background-color: $one;
+                                @include border(2px);
+                                padding: .1rem .3rem;
+                                font-family: "texte";
+                                cursor: pointer;
+                            }
+                        }
+                        .contenuTweet{
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            text-align: justify;
+                            height: 65%;
+                            width: 100%;
+                            font-size: 1rem;
+                            padding: 1rem 0rem;
+                        }
+                        .reactTweet{
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            height: 20%;
+                            width: 100%;
+                            .reactions{
+                                display: flex;;
+                                flex-direction: row;
+                                justify-content: start;
+                                align-items: center;
+                                padding-right: 1.5rem;
+                                width: 100%;
+                                .commentaire, .retweet, .like{
+                                    display: flex;
+                                    flex-direction: row;
+                                    align-items: center;
+                                    padding-right: 1.5rem;
+                                    .logo{
+                                        width: 2rem;
+                                        padding-right: .2rem;
+                                        height: 1rem;
+                                        cursor: pointer;
+                                        img{
+                                            max-width: 100%;
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;
+                                            cursor: pointer;
+                                        }
+                                    }
+                                    .logo:hover{
+                                        transform: scale(1.2);
+                                        transition: .8s;
+                                    }
+                                    .textmessage{
+                                        transform: translateX(-3px);
+                                    }
+                                    .textlike{
+                                        transform: translateX(-5px);
+                                    }
+                                }
+                            }
+                            p{
+                                margin: 0px;
+                                font-family: "texte";
+                                font-weight: bold;
+                                text-align: right;
+                                width: 6.5rem;
+                            }
+                        }
+                    }
+                    }
+                 }
+            }
+            .separation1{
+                height: 100%;
+                width: 12px;
+                background-color: black;
+            }
+        }
+    }
+    .endTweet{
+        background-color:rgba($color: #000000, $alpha: .25);
+        height: 100%;
+        border-top: 4px solid black;
+    }
+}
+
+// Profil
+
+#containerTwo{
+    #haut{
+        width: 100%;
+        height: auto;
+        .partieHaute{
+            width: 100%;
+            height: auto;
+            .fullProfil{
+                background-color: rgba($color: #000000, $alpha: .25);
+                height: 100%;
+                padding: 1rem 2rem;
+                .everything{
+                    height: 100%;
+                    margin: 2rem 1rem;
+                    display: flex;
+                    flex-direction: row;
+                    background-color: $four;
+                    max-width: 100%;
+                    .containerPicInfo{  
+                        display: flex;
+                        flex-direction: column;             
+                        .profilPic{
+                            width: 8rem;
+                            transform: translateY(-10px) translateX(-5px);
+                            img{
+                                width: 80%;
+                                @include border(3px);
+                                cursor: pointer;
+                            }
+                        }
+                        .membreDepuis{
+                            font-family: "titre";
+                            font-size: .8rem;
+                            font-weight: bolder;
+                            padding-left: 1rem;
+                            margin-top: 0px;
+                        }
+                    }
+                    .containerAllText{
+                    display: flex;
+                    align-items: center;
+                    width: 70%;
+                    padding-top: 1rem;
+                    padding-right: 1rem;
+                    text-overflow: ellipsis;
+                    padding: .2rem;
+                    .allText{
+                        display: flex;
+                        flex-direction: column;
+                        align-items: start;
+                        justify-content: space-between;
+                        width: 100%;
+                        height: 100%;
+                            .pseudoEtEtatUser{
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            width: 100%;
+                                    h1{
+                                        font-family: "titre";
+                                        font-size: 1.4rem;
+                                        @include resetMargin();
+                                        letter-spacing: normal;
+                                        cursor: pointer;
+                                    }
+                                    .stat1{
+                                        width: .7rem;
+                                        height: .7rem;
+                                        border: 2px solid black;
+                                        margin-left: .7rem;
+                                        background-color: $orange;
+                                    }
+                                    .stat2{
+                                        width: .7rem;
+                                        height: .7rem;
+                                        border: 2px solid black;
+                                        margin-left: .7rem;
+                                        background-color: $red;
+                                    }
+                                    .stat0{
+                                        width: .7rem;
+                                        height: .7rem;
+                                        border: 2px solid black;
+                                        margin-left: .7rem;
+                                        background-color: $green;
+                                    }
+                            }
+                        .contenuBio{
+                            display: flex;
+                            flex-direction: row;
+                            align-items: start;
+                            text-align: justify;
+                            height: 650;
+                            font-size: 1rem;
+                            padding-top: .5rem;
+                            padding-right: 1rem;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            width: 95%;
+                            p{
+                                width: 100%;
+                                word-wrap: break-word;
+                            }
+                        }
+                        .containSub{
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: end;
+                            align-items: center;
+                            width: 100%;
+                            float: right;
+                            transform: translateY(7px) translateX(7px);
+                            .abo{
+                                display: flex;
+                                flex-direction: row;
+                                justify-content: end;
+                                align-items: baseline;
+                                padding: .3rem .6rem;
+                                background-color: $four;
+                                @include border(2px);
+                                margin-left: 1rem;
+                                font-family: "texte";
+                                font-size: 1.1rem;
+                                color: white;
+                                cursor: pointer;
+                                .nbAbo{
+                                    font-size: 1.1rem
+                                }
+                                p{
+                                    @include resetMargin;
+                                    margin-left: .2rem;
+                                    font-size: .85rem;
+                                }
+                            }
+                            .aboplus{
+                                display: flex;
+                                flex-direction: row;
+                                justify-content: center;
+                                align-items: center;
+                                background-color: $one;
+                                @include border(2px);
+                                margin-left: 1rem;
+                                font-family: "texte";
+                                font-size: 1.2rem;
+                                color: black;
+                                height: 2rem;
+                                width: 2rem;
+                                cursor: pointer;
+                                .nbAbo{
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    img{
+                                        height: 1.5rem;
+                                        width: 1.5rem;
+                                    }
+                                }
+                            }
+                            .abomoins{
+                                display: flex;
+                                flex-direction: row;
+                                justify-content: center;
+                                align-items: center;
+                                background-color: $two;
+                                @include border(2px);
+                                margin-left: 1rem;
+                                font-family: "texte";
+                                font-size: 1.2rem;
+                                color: black;
+                                height: 2rem;
+                                width: 2rem;
+                                cursor: pointer;
+                                .nbAbo{
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    img{
+                                        height: 1.5rem;
+                                        width: 1.5rem;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+    #milieu{
+        width: 100%;
+        .reponse{
+            border-left: 4px solid black;
+            border-right: 12px solid black;
+            height: 4rem;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-evenly;
+            background-color: rgba($color: #000000, $alpha: .15);
+            padding: .5rem;
+            border-top: 4px solid black;
+            border-bottom: 2px solid black;
+            img{    
+                height: 90%;
+                @include border(2px);
+            }
+            #commInput{
+                background: none;
+                border: none;
+                text-align: justify;
+                @include resetMargin();
+                width: 80%;
+                height: 90%;
+                display: block;
+                align-items: start;
+                resize: none;
+                padding: 0rem 1rem;
+            }
+            .bouton{
+                background-color: $one;
+                @include border(3px);
+                color: white;
+                padding: .3rem .2rem;
+                font-size: .8rem;
+                letter-spacing: .5px;
+                width: 6rem;
+                height: 1.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
+        }
+    }
+    #bas{
+        height: 100%;
+        height: auto;
+        background-color: rgba($color: #000000, $alpha: .0);
+        .partieBasse{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            .separation{
+                height: 100%;
+                width: 4px;
+                background-color: black;
+            }
+            .fullTweet{
+                width: 100%;
+                .everything{
+                    display: flex;
+                    flex-direction: row;
+                    margin: 1rem;
+                    .profilPic{
+                        width: 8rem;
+                        img{
+                            width: 80%;
+                            @include border(3px);
+                            cursor: pointer;
+                        }
+                    }
+                    .containerAllText{
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    padding: .2rem;
+                    .allText{
+                        display: flex;
+                        flex-direction: column;
+                        align-items: start;
+                        justify-content: center;
+                        width: 100%;
+                        .pseudoEtatEtDel{
+                            width: 100%;
+                            height: 15%;
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            justify-content: space-between;
+                            .pseudoEtEtatUser{
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            width: 100%;
+                                    h1{
+                                        font-family: "titre";
+                                        font-size: 1.4rem;
+                                        @include resetMargin();
+                                        letter-spacing: normal;
+                                        cursor: pointer;
+                                    }
+                                    .stat1{
+                                        width: .7rem;
+                                        height: .7rem;
+                                        border: 2px solid black;
+                                        margin-left: .7rem;
+                                        background-color: $orange;
+                                    }
+                                    .stat2{
+                                        width: .7rem;
+                                        height: .7rem;
+                                        border: 2px solid black;
+                                        margin-left: .7rem;
+                                        background-color: $red;
+                                    }
+                                    .stat0{
+                                        width: .7rem;
+                                        height: .7rem;
+                                        border: 2px solid black;
+                                        margin-left: .7rem;
+                                        background-color: $green;
+                                    }
+                            }
+                            .delTweet{
+                                color: white;
+                                font-size: .8rem;
+                                background-color: $one;
+                                @include border(2px);
+                                padding: .1rem .3rem;
+                                font-family: "texte";
+                                cursor: pointer;
+                            }
+                        }
+                        .contenuTweet{
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            text-align: justify;
+                            height: 65%;
+                            width: 100%;
+                            font-size: 1rem;
+                        }
+                        .reactTweet{
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            height: 20%;
+                            width: 100%;
+                            .reactions{
+                                display: flex;;
+                                flex-direction: row;
+                                justify-content: start;
+                                align-items: center;
+                                padding-right: 1.5rem;
+                                width: 100%;
+                                .commentaire, .retweet, .like{
+                                    display: flex;
+                                    flex-direction: row;
+                                    align-items: center;
+                                    padding-right: 1.5rem;
+                                    .logo{
+                                        width: 2rem;
+                                        padding-right: .2rem;
+                                        height: 1rem;
+                                        cursor: pointer;
+                                        img{
+                                            max-width: 100%;
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;
+                                            cursor: pointer;
+                                        }
+                                    }
+                                    .logo:hover{
+                                        transform: scale(1.2);
+                                        transition: .8s;
+                                    }
+                                    .textmessage{
+                                        transform: translateX(-3px);
+                                    }
+                                    .textlike{
+                                        transform: translateX(-5px);
+                                    }
+                                }
+                            }
+                            p{
+                                margin: 0px;
+                                font-family: "texte";
+                                font-weight: bold;
+                                text-align: right;
+                                width: 6.5rem;
+                            }
+                        }
+                    }
+                    }
+                 }
+            }
+            .separation1{
+                height: 100%;
+                width: 12px;
+                background-color: black;
+            }
+        }
+        .borderbas{
+            width: 100%;
+            background-color: black;
+            height: 2px;
+        }
+        .containBorder{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .containBorder:last-child{
+            opacity: 0;
+        }
+    }
+    .endTweet{
+        background-color:rgba($color: #000000, $alpha: .25);
+        height: 100%;
+        border-top: 4px solid black;
+    }
+}
+
+// Abonnement Abonné
+
+#containerTwo{
+    width: 43%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+#haut{        
+        width: 100%;
+    #sendMessage{
+        background-color: rgba($color: #000000, $alpha: .25);
+        width: 100%;
+        padding: 1.5rem 0rem;
+        @include display;
+        .containPrevTweet{
+            width: 80%;
+            height: 80%;
+            background-color: $four;
+            display: flex;
+            flex-direction: column;
+            .photoEtInfo{
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                height: 70%;
+                .photo{
+                    width: 6rem;
+                    position: relative;
+                    img{
+                        width: 100%;
+                        bottom: 0;
+                        position: absolute;
+                        transform: translateX(-15px) translateY(-5px);
+                        @include border(3px);
+                        z-index: 98;
+                        cursor: pointer;
+                    }
+                }
+                .containerPseudoEtTweet{
+                         width: 80%;
+                        height: 100%;
+                        font-size: .6rem;
+                        padding: .5rem 1.2rem;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: start;
+                    .pseudoStatut{
+                        @include display;
+                        h1{
+                            font-family: "titre";
+                            font-size: 1.4rem;
+                            @include resetMargin();
+                            letter-spacing: normal;
+                            cursor: pointer;
+                        }
+                        .stat1{
+                            width: .7rem;
+                            height: .7rem;
+                            border: 2px solid black;
+                            margin-left: .7rem;
+                            background-color: $orange;
+                        }
+                        .stat2{
+                            width: .7rem;
+                            height: .7rem;
+                            border: 2px solid black;
+                            margin-left: .7rem;
+                            background-color: $red;
+                        }
+                        .stat0{
+                            width: .7rem;
+                            height: .7rem;
+                            border: 2px solid black;
+                            margin-left: .7rem;
+                            background-color: $green;
+                        }
+                    }
+                    .Mississive{
+                        width: 100%;
+                        height: 100%;
+                        margin: .5rem 0rem;
+                        textarea{
+                            letter-spacing: normal;
+                            background-color: $four;
+                            border: none;
+                            text-align: justify;
+                            @include resetMargin();
+                            width: 100%;
+                            height: 90%;
+                            display: block;
+                            align-items: start;
+                            resize: none;
+                        }
+                        textarea::placeholder{
+                            font-family: "texte";
+                            color:black;
+                            font-size: 1rem;
+                        }
+                    }
+                }
+            }
+            .buttonTweet{
+                height: 30%;
+                width: 100%;
+                text-align: center;
+                position: relative;
+                .missiver{
+                    @include border(3px);
+                    position: absolute;
+                    width: 10rem;
+                    height: 2rem;
+                    background-color: $one;
+                    right: 0;
+                    bottom: 0;
+                    @include display;
+                    @include resetMargin;
+                    transform: translateX(15px) translateY(15px);
+                    cursor: pointer;
+                    p{
+                        color: white;
+                        font-family: "texte";
+                    }
+                }
+                .uploadPhoto{
+                    @include border(3px);
+                    position: absolute;
+                    width: 2rem;
+                    height: 2rem;
+                    right: 0;
+                    bottom: 0;
+                    background-color: $four;
+                    transform: translateX(-10.5rem) translateY(15px);
+                    img{
+                        width: 100%;
+                        height: 100%;
+                    }
+                    label {
+                        cursor: pointer;
+                        /* Style as you please, it will become the visible UI component. */
+                     }
+                     
+                     #upload-photo {
+                        width: 100%;
+                        height: 100%;
+                        left: 0;
+                        opacity: 0;
+                        position: absolute;
+                        z-index: -1;
+                     }
+                }
+            }
+        }
+    }
+}
+#milieu{
+    width: 100%;
+    #separation{
+        background-color: black;
+        width: 100%;
+        height: 4px;
+    }
+}
+#bas{
+    height: auto;
+    border-right: 12px solid black;
+    border-left: 4px solid black;
+    .containAbo{
+        height: auto;
+        #containerTweet{
+            height: auto;
+        #containerTweet::-webkit-scrollbar{
+            display: none;     
+        }
+            .containMissive{
+                margin: 1rem;
+                background-color: $five;
+                height: 100%;
+                padding: 1rem;
+                @include border(3px);
+                display: flex;
+                flex-direction: row;
+                margin-bottom: 1rem;
+                position: relative;
+                .pp{
+                    height: 5rem;
+                    img{
+                        max-height: 100%;
+                        @include border(3px);
+                        cursor: pointer;
+
+                    }
+                }
+                .infoMissive{
+                    width: 100%;
+                    height: 100%;
+                    padding-left: .5rem;
+                    letter-spacing: normal;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    .upLine{
+                        width: 100%;
+                        height: 30%;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: space-between;
+                        .pseudoEtStatus{
+                            width: 100%;
+                            font-family: "titre";
+                            font-size: 1.5rem;
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            .stat1{
+                                width: .7rem;
+                                height: .7rem;
+                                border: 2px solid black;
+                                margin-left: .7rem;
+                                background-color: $orange;
+                            }
+                            .stat2{
+                                width: .7rem;
+                                height: .7rem;
+                                border: 2px solid black;
+                                margin-left: .7rem;
+                                background-color: $red;
+                            }
+                            .stat0{
+                                width: .7rem;
+                                height: .7rem;
+                                border: 2px solid black;
+                                margin-left: .7rem;
+                                background-color: $green;
+                            }
+                            p{
+                                margin: 0px;
+                                cursor: pointer;
+                                font-size: 1.8rem;
+                            }
+                        }
+                    }
+                    .missive{
+                        height: 65%;
+                        font-size: .8rem;
+                        text-align: justify;
+                        height: 70%;
+                        padding-right: 1rem;
+                        word-wrap: break-word;
+                    }
+                }
+                .aboplus{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: $one;
+                    @include border(2px);
+                    margin-left: 1rem;
+                    font-family: "texte";
+                    font-size: 1.2rem;
+                    color: black;
+                    height: 2rem;
+                    width: 2rem;
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    margin: 1rem;
+                    cursor: pointer;
+                    .nbAbo{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        img{
+                            height: 1.5rem;
+                            width: 1.5rem;
+                        }
+                    }
+                }
+                .abomoins{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: $two;
+                    @include border(2px);
+                    margin-left: 1rem;
+                    font-family: "texte";
+                    font-size: 1.2rem;
+                    color: black;
+                    height: 2rem;
+                    width: 2rem;
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    margin: 1rem;
+                    cursor: pointer;
+                    .nbAbo{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        img{
+                            height: 1.5rem;
+                            width: 1.5rem;
+                        }
+                    }
+                }
+            }
+        }
+        .separation2{
+            float: right;
+            width: 12px;
+            background-color: black;
+        }
+        }
+        .endTweet{
+            background-color:rgba($color: #000000, $alpha: .25);
+            height: 100%;
+            border-top: 4px solid black;
+        }
+    }
+}
+
+// Paramètres & Coolup
+
+#containerTwo{
+    #haut{
+        .partieParamHaute{
+            height: 8rem;
+            background-color: rgba($color: #000000, $alpha: .25);
+            padding: 1rem 0rem;
+            .parametersProfile{
+                height: 100%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                text-align: center;
+                justify-content: center;
+                p{
+                    font-size: 2.5rem;
+                    font-family: "titre";
+                    cursor: pointer;
+                }
+                .red:hover{
+                    transform: translateX(3px) scale(1.2);
+                }
+                .profilePic{
+                    @include display;
+                    width: 33%;
+                    height: 100%;
+                    img{
+                        max-height: 80%;
+                        @include border(4px);
+                    }
+                }
+                .pseudo{
+                    width: 34%;
+                    max-height: 100%;
+                    @include display;
+                    p{
+                        letter-spacing: .3rem;
+                        font-family: "titre";
+                        font-size: 1.5rem;
+                        text-align: center;
+                    }
+                }
+                .etat{
+                    width: 33%;
+                    max-height: 100%;
+                    @include display;
+                    .etat0{
+                        background-color: $green;
+                        width: 1.5rem;
+                        height: 1.5rem;
+                        @include border(3px);
+                    }
+                    .etat1{
+                        background-color: $orange;
+                        width: 1.5rem;
+                        height: 1.5rem;
+                        @include border(3px);
+                    }
+                    .etat2{
+                        background-color: $red;
+                        width: 1.5rem;
+                        height: 1.5rem;
+                        @include border(3px);
+                    }
+                }
+            }
+        }
+    }
+    #milieu{
+        width: 100%;
+        .separation{
+            width: 100%;
+            background-color: black;
+            height: 4px;
+        }
+    }
+    #bas{
+        border-left: 4px solid black;
+        border-right: 12px solid black;
+        height: auto;
+        .parametreGeneral{
+            height: 100%;
+            padding: 1.2rem;
+            .parametrePublique{
+                height: auto;
+                padding: 1rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                background-color: $two;
+                margin-bottom: 2rem;
+                @include border(3px);
+                h3{
+                    padding-left: 1rem;
+                }
+                h1{
+                    margin: 0px;
+                    font-family: "titre";
+                    margin-bottom: 1.6rem;
+                }
+                .title{
+                    margin-bottom: 0px;
+                }
+                .etatChoix{
+                    #actif{
+
+                    }
+                    #inactif{
+
+                    }
+                    #absent{
+
+                    }
+                    .active{
+
+                    }
+                }
+                .bbox2{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: end;
+                    width: 100%;
+                    justify-content: center;
+                    margin-bottom: 1.2rem;
+                    overflow: hidden;
+                    align-items: center;
+                    .etati{
+                        @include border(3px);
+                        height: 5rem;
+                    }
+                    .etatB{
+                        width: .8rem;
+                        height: .8rem;
+                        background-color: #00bfff;
+                        @include border(3px);
+                    }
+                    .pseudo{
+                        font-size: 2rem;
+                        font-family: "titre";
+                        padding: 0rem 1rem;
+                    }
+                }
+                .bbox3{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    width: 100%;
+                    img{
+                        width: 7rem;
+                        height: 7rem;
+                        @include border(3px);
+                    }
+                    .bioo{
+                        width: 100%;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        display: flex;
+                        flex-direction: column;
+                        margin-left: .5rem;
+                        .pseudoEtEtat{
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            .pseudo{
+                                font-size: 2rem;
+                                font-family: "titre";
+                                margin: 0px;
+                            }
+                            p{
+                                font-size: 2rem;
+                                font-family: "titre";
+                                margin: 0px;              
+                                margin-left: .5rem;
+                            }
+                            .etatB{
+                                width: .8rem;
+                                height: .8rem;
+                                background-color: #00bfff;
+                                @include border(3px);   
+                                margin-left: .8rem;
+                            }
+                        }
+                        h6{
+                            font-size: 1.1rem;
+                            font-family: "texte";
+                            word-break: break-all;
+                            margin-top: .5rem;
+                        }
+                    }
+                }
+                .bbox{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: end;
+                    width: 100%;
+                    justify-content: space-evenly;
+                    margin-bottom: 1.2rem;
+                    overflow: hidden;
+                    .etati{
+                        @include border(3px);
+                    }
+                    .etatB{
+                        width: .8rem;
+                        height: .8rem;
+                        background-color: blue;
+                        @include border(3px);
+                    }
+                    .pseudo{
+                        font-size: 1.2rem;
+                        font-family: "titre";
+                    }
+                    .button{
+                        background-color: $five;
+                        @include border(2px);
+                        cursor: pointer;
+                        width: 1.5rem;
+                        height: 1.5rem;
+                        @include display;
+                        font-family: "titre";
+
+                    }
+                    .button:hover{
+                        background-color: $one;
+                        color: white;
+                    }
+                    input{ 
+                        background-color: $five;
+                        @include border(2px);
+                        width: 80%;
+                        height: 4rem;
+                        font-size: 1.2rem;
+                        font-family: "texte";
+                        padding: .5rem;
+                    }
+                    textarea{
+                        background-color: $five;
+                        @include border(2px);
+                        resize: none;
+                        width: 80%;
+                        height: 6rem;
+                        font-size: 1.2rem;
+                        font-family: "texte";
+                        padding: .5rem;
+                    }
+                    p{
+                        font-size: 2rem;
+                        font-family: "titre";
+                        word-break: break-all;
+                    }
+                img{
+                    height: 5rem;
+                }
+                }
+                .redb{
+                    @include border(4px);
+                    border-color: red;
+                }
+                .blueb{
+                    @include border(4px);
+                    border-color: blue;
+                }
+                .greenb{
+                    @include border(4px);
+                    border-color: green;
+                }
+                .purpleb{
+                    @include border(4px);
+                    border-color: purple;
+                }
+            }
+            .parametrePrive{
+                height: auto;
+                padding: 1rem;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                background-color: $two;
+                @include border(3px);
+                h3{
+                    padding-left: 1rem;
+                }
+                h1{
+                    margin: 0px;
+                    font-family: "titre";
+                    margin-bottom: 1.6rem;
+                }
+                .coteAll{ 
+                    display: flex;
+                    flex-direction: row;
+                    width: 100%;
+                    .cote{
+                        display: flex;
+                        flex-direction: column;
+                        width: 41%;
+                        padding-left: 1rem;
+                        margin-bottom: 1rem;
+                        h3{
+                            padding-left: 0rem;
+                        }
+                        .boxname{
+                            background-color: $five;
+                            @include border(2px);
+                            height: 2rem;
+                            padding: 1rem;
+                            display: flex;
+                            align-items: center;
+                            font-size: 1.2rem;
+                            color: black;
+                        }
+                    }
+               }
+                .boxmail{
+                    background-color: $five;
+                    @include border(2px);
+                    width: 80%;
+                    height: 4rem;
+                    font-size: 1.2rem;
+                    font-family: "texte";
+                    padding: .5rem;
+                    margin-bottom: 1.2rem;
+                    margin-left: 1rem;
+                    display: flex;
+                    align-items: center;
+                    padding-left: 1.1rem;
+                }
+                .boxmail2{
+                    background-color: $five;
+                    @include border(2px);
+                    width: 95%;
+                    height: 4rem;
+                    font-size: 1.2rem;
+                    font-family: "texte";
+                    margin-bottom: 1.2rem;
+                    margin-left: 1rem;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                }
+                .bigbox{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: end;
+                    width: 100%;
+                    justify-content: space-evenly;
+                    input{
+                        background-color: $five;
+                        @include border(2px);
+                        width: 80%;
+                        height: 2rem;
+                        font-size: 1.2rem;
+                        font-family: "texte";
+                        padding: .5rem;
+                    }
+                    .button{
+                        background-color: $five;
+                        @include border(2px);
+                        cursor: pointer;
+                        width: 2rem;
+                        height: 2rem;
+                        @include display;
+                        margin-bottom: .8rem;
+                    }
+                    .button:hover{
+                        background-color: $one;
+                        color: white;
+                    }
+                    .mdp{
+                        display: flex;
+                        flex-direction: column;
+                        width: 100%;
+                        input{
+                            background-color: $five;
+                            @include border(2px);
+                            width: 84%;
+                            height: 4rem;
+                            font-size: 1.2rem;
+                            font-family: "texte";
+                            padding: .5rem;
+                            padding-left: 1rem;
+                            margin-left: 1rem;
+                            margin-bottom: .8rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.containerThree{
+    overflow-x: hidden;
+    width: 33%;
+    height: 100%;
+    background-color: rgba($color: #000000, $alpha: .25);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    .logos{
+        width: 100%;
+        height: 15%;
+        display: flex;
+        .logo{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0rem 1rem;
+            .nom{
+                @include border(3px);
+                height: 4rem;
+                @include display;
+                background-color: $four;
+                font-family: "titre";
+                font-size: 1.5rem;
+                width: 70%;
+                padding: 0rem .5rem;
+                letter-spacing: 5px;
+            }
+            .sablier{
+                width: 4rem;
+                background-color: $two;
+                @include border(3px);
+                height: 4rem;
+                @include display;
+                img{
+                    height: 100%;
+                }
+            }
+        }
+    }  
+    .notLogo{
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        .footer{
+            float: right;
+            margin-right: 2rem;
+        }
+        .containAmis{
+            margin: 0rem 1rem;
+            margin-bottom: 1rem;
+            max-height: 25rem;
+            background-color: $four;
+            @include border(3px);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: 1.5s;
+            .titreEtButton{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                height: 3rem;
+                padding: .5rem 0rem;
+                .titre{
+                    display: flex;
+                    align-items: center;
+                    font-size: 2rem;
+                    padding-left: 1rem;
+                }
+                .button{
+                    display: flex;
+                    align-items: center;
+                    height: 100%;
+                    img{
+                        height: 50%;
+                        transition: .5s;
+                    }
+                    img:hover{
+                        transform: rotate(-90deg);
+                    }
+                    padding-right: 1rem;
+                    .active{
+                        transform: rotate(-90deg)!important;
+                    }
+                    .active:hover{
+                        transform: rotate(0deg)!important;
+                    }
+                }
+            }
+            #amisContainer{
+                height: 100%;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                overflow-y: scroll;
+                overflow-x: hidden;
+                transition: .5s;
+                .amigo{
+                    background-color: $three;
+                    width: 92%;
+                    display: flex;
+                    flex-direction: row;
+                    padding: .5rem;
+                    height: 5rem;
+                    margin-bottom: 1.5rem;
+                    .photoAmis{
+                        width: 6rem;
+                        margin-right: .3rem;
+                        img{
+                            height: 100%;
+                            @include border(2px);
+                            cursor: pointer;
+                        }
+                    }
+                    .infoAmis{
+                        width: 75%;
+                        display: flex;
+                        flex-direction: column;
+                        .pseudoEtStat{
+                            width: 100%;
+                            height: 20%;
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            .pseudo{
+                                font-family: "titre";
+                                font-size: 1.2rem;
+                                cursor: pointer;
+                            }
+                            .stat1{
+                                background-color: $orange;
+                                width: 1rem;
+                                height: 1rem;
+                                border : 2px solid black;
+                                margin-left: .3rem;
+                            }
+                            .stat2{
+                                background-color: $red;
+                                width: 1rem;
+                                height: 1rem;
+                                border : 2px solid black;
+                                margin-left: .3rem;
+                            }
+                            .stat0{
+                                background-color: $green;
+                                width: 1rem;
+                                height: 1rem;
+                                border : 2px solid black;
+                                margin-left: .3rem;
+                            }
+                        }
+                        .bio{
+                            height: 70%;
+                            width: 100%;
+                            font-size: .8rem;
+                            margin-top: .4rem;
+                            overflow: hidden;
+                            text-align: justify;
+                        }
+                        .missiveButton{
+                            height: 10%;
+                            width: 100%;
+                            .button{
+                                background-color: $two;
+                                color: black;
+                                @include border(2px);
+                                padding: .2rem .5rem;
+                                text-align: center;
+                                width: 4rem;
+                                float: right;
+                                transition: .8s;
+                                cursor: pointer;
+                            }
+                            .button:hover{
+                                background-color: $one;
+                                color: white;
+                            }
+                        }
+                    }
+                }
+            }
+            #suggestionContainer{
+                height: 100%;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                overflow-y: scroll;
+                overflow-x: hidden;
+                transition: .5s;
+                .amigo{
+                    background-color: $three;
+                    width: 92%;
+                    display: flex;
+                    flex-direction: row;
+                    padding: .5rem;
+                    height: 5rem;
+                    margin-bottom: 1.5rem;
+                    .photoAmis{
+                        width: 6rem;
+                        margin-right: .3rem;
+                        img{
+                            height: 100%;
+                            @include border(2px);
+                            cursor: pointer;
+                        }
+                    }
+                    .infoAmis{
+                        height: 100%;
+                        width: 75%;
+                        position: relative;
+                        .pseudoEtStat{
+                            width: 100%;
+                            height: 20%;
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            .pseudo{
+                                font-family: "titre";
+                                font-size: 1.2rem;
+                                cursor: pointer;
+                            }
+                            .stat1{
+                                background-color: $orange;
+                                width: 1rem;
+                                height: 1rem;
+                                border : 2px solid black;
+                                margin-left: .3rem;
+                            }
+                            .stat2{
+                                background-color: $red;
+                                width: 1rem;
+                                height: 1rem;
+                                border : 2px solid black;
+                                margin-left: .3rem;
+                            }
+                            .stat0{
+                                background-color: $green;
+                                width: 1rem;
+                                height: 1rem;
+                                border : 2px solid black;
+                                margin-left: .3rem;
+                            }
+                        }
+                        .bio{
+                            max-height: 70%;
+                            width: 100%;
+                            font-size: .8rem;
+                            margin-top: .4rem;
+                            overflow: hidden;
+                            text-align: justify;
+                        }
+                        .missiveButton{
+                            height: 10%;
+                            width: 100%;
+                            .button{
+                                background-color: $two;
+                                color: black;
+                                @include border(2px);
+                                padding: .2rem .5rem;
+                                text-align: center;
+                                width: 4rem;
+                                float: right;
+                                transition: .8s;
+                                cursor: pointer;
+                            }
+                            .button:hover{
+                                background-color: $one;
+                                color: white;
+                            }
+                        }
+                    }
+                    .aboplus{
+                        position: absolute;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        align-items: center;
+                        background-color: $one;
+                        @include border(2px);
+                        margin-left: 1rem;
+                        font-family: "texte";
+                        font-size: 1.2rem;
+                        color: black;
+                        height: 2rem;
+                        width: 2rem;
+                        float: right;
+                        bottom: 0;
+                        right: 0;
+                        cursor: pointer;
+                        .nbAbo{
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            img{
+                                height: 1.5rem;
+                                width: 1.5rem;
+                            }
+                        }
+                    }
+                    .abomoins{
+                        position: absolute;
+                        bottom: 0;
+                        right: 0;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        align-items: center;
+                        background-color: $two;
+                        @include border(2px);
+                        margin-left: 1rem;
+                        font-family: "texte";
+                        font-size: 1.2rem;
+                        color: black;
+                        height: 2rem;
+                        width: 2rem;
+                        float: right;
+                        cursor: pointer;
+                        .nbAbo{
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            img{
+                                height: 1.5rem;
+                                width: 1.5rem;
+                            }
+                        }
+                    }
+                    
+                }
+            }
+        }
+        .resized{
+            max-height: 3.2rem!important;
+            transition: 1s;
+        }
+    }
+}  
+
+//reponsive
+
+@media (max-width: 1366px){
+    .containerOne{
+        padding-top: 1.5rem;
+        width: 15%;
+        .containerSearchBar{
+            display: none;
+        }
+        .buttonMenu{
+            height: 2.8rem!important;
+            width: 2.8rem!important;
+            .containerImage{
+                width: 100%!important;
+                img{
+                    height: 100%!important;
+                }
+            }
+            .containerText{
+                width: 0%;
+                display: none!important;
+                p{   
+                    display: none;
+                }
+            }
+        }
+        .Search{
+            display: flex!important;
+        }
+        #containerMiniProfil{
+            #timerRestant{
+                display: none;
+            }
+            #timerRestantMobile{
+                display: flex;
+                margin-bottom: 1rem;
+            }
+            #miniProfil{
+                height: 2.8rem;
+                width: 2.8rem;
+                padding: 0px!important;
+                margin-bottom: 1rem;
+                overflow: visible;
+                .photo{
+                    height: 100%;
+                    width: 130%;
+                    position: relative;
+                    img{
+                        border:none;
+                        height: 2.8rem;
+                        width: 2.8rem;
+                    }
+                    .stat1, .stat2, .stat0{
+                        display: block!important;
+                        position: absolute;
+                        margin-left: 3rem;
+                    }
+                }
+                .pseudoEtStatus{
+                    display: none;
+                }
+                .status{
+                    display: none;
+                }
+                .deco{
+                    display: none;
+                }
+            }
+        }
+    }
+    #containerTwo{
+        width: 55%!important;
+    }
+    .containerThree{
+        width: 30%!important;
+        .nom{
+            width: 58%!important;
+        }
+    }
+}
+
+@media (max-width: 950px){
+    .containerOne{
+        width: 20%!important;
+    }
+    #containerTwo{
+        width: 80%!important;
+    }
+    .separation2{
+        display: none;
+    }
+    .containerThree{
+        display: none;
+    }
+}

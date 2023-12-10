@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+    <title>cooldown !</title>
+</head>
+<body>
+    <div class="containerAll">      
+        <div class="containerOne">
+            <div class="containerSearchBar">
+                <input type="text" name="query" class="searchBar" onkeyup="searchBar()" placeholder="rechercher"/>
+                <div class="containerResearch"><div id="searchResult"><!-- Put results here--></div></div>
+            </div>
+
+            <div class="containerButtonsMenu">
+                <div class="buttonMenu Search">
+                    <div class="containerImage">
+                        <img src="ressources/loop.png">
+                    </div>
+                </div>
+                <div class="buttonMenu" onclick="redirection()">
+                    <div class="containerImage">
+                        <img src="ressources/accueil.svg">
+                    </div>
+                    <div class="containerText">
+                        <p>accueil</p>
+                    </div>
+                </div>
+                <div class="buttonMenu">
+                    <div class="containerImage">
+                        <img src="ressources/notifications.svg">
+                    </div>
+                    <div class="containerText">
+                        <p>notifications</p>
+                    </div>
+                </div>
+                <div class="buttonMenu">
+                    <div class="containerImage">
+                        <img src="ressources/messages.svg">
+                     </div>
+                     <div class="containerText">
+                        <p>messages</p>
+                     </div>
+                </div>
+                <div class="buttonMenu" onclick="traitement_Get_Coolup()">
+                    <div class="containerImage">
+                        <img src="ressources/coolup.svg">
+                    </div>
+                    <div class="containerText">
+                        <p class="red">coolup</p>
+                    </div>
+                </div>
+                <div class="buttonMenu" onclick="traitement_Get_Profil()">
+                    <div class="containerImage">
+                        <img src="ressources/profil.svg">
+                    </div>
+                    <div class="containerText">
+                        <p>profil</p>
+                    </div>
+                </div>
+                <div class="buttonMenu" onclick="traitement_Get_Parametre();">
+                    <div class="containerImage">
+                        <img src="ressources/paramètre.svg">
+                     </div>
+                     <div class="containerText" onclick="traitement_Get_Parametre();">
+                        <p>paramètres</p>
+                     </div>
+                </div>
+                <a onclick="Get_Form_Tweet(); Get_Tweet()" href="#sendMessage">
+                <div class="buttonMenu Search">
+                    <div class="containerImage">
+                        <img src="ressources/tweet.png">
+                    </div>
+                </div>
+                </a>
+            </div>
+            <div id="containerMiniProfil">
+                <div id="timerRestant"></div>
+                <div id="timerRestantMobile"></div>
+                <div id="miniProfil"></div>
+            </div>
+        </div>  
+        <div id="containerTwo">
+            <div id="haut">
+                <div id="sendMessage">
+                </div>
+             </div>
+                <div id="milieu">
+                <div id="separation"></div>
+              </div>
+              <div id="bas">
+                <div class="containTweet">
+                    <div id="containerTweet">
+                    </div>
+                </div>
+             </div>
+             <div class="endTweet"></div>
+        </div>
+        <div class="containerThree">
+            <div class="logos">
+             <div class="logo">
+                 <div class="nom">cooldown</div>
+                 <a href="#sendMessage">
+                    <div class="sablier"><img src="ressources/logo_cooldown.svg" alt=""></div>
+                 </a>
+             </div>
+            </div>
+             <div class="notLogo">
+                <div id="Amigos" class="containAmis">
+                    <div class="titreEtButton">
+                        <div class="titre">amis</div>
+                        <div class="button"><img id="amigosBouton"src="ressources/fleche.svg" alt=""></div>
+                    </div>
+                    <div id="amisContainer">
+                        <p>Vous n'avez pas encore d'amis D:</p>
+                    </div>
+                </div>
+                <div id="Suggestion" class="containAmis">
+                    <div class="titreEtButton">
+                        <div class="titre">suggestion</div>
+                        <div class="button"><img id="suggestionBouton"src="ressources/fleche.svg" alt=""></div>
+                    </div>
+                    <div id="suggestionContainer">
+                        <p>Vous suivez tout le monde !</p>
+                    </div>
+                </div>
+                <div class="footer">
+                    © 2023 cooldown, Inc.
+                 </div>
+             </div>
+        </div>
+    </div>
+</body>
+<script src="js/config.js"></script> 
+<script src="js/index.js"></script> 
+<script src="js/deconnexion.js"></script> 
+<script src="js/like.js"></script>
+<script src="js/temps.js"></script> 
+<script src="js/retweet.js"></script> 
+<script src="js/follow.js"></script>
+<script src="js/coolup.js"></script>
+<script src="js/parametre.js"></script>
+<script src="js/deco.js"></script>
+</html>

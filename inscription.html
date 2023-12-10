@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0"/>
+    <link rel="stylesheet" href="css/register.css"/>
+    <link rel="shortcut icon" type="image/ico" href="ressources/logo_cooldown.svg"/>
+    <title>Cooldown | Inscription </title>
+</head>
+<body>
+    <div class="register_all">
+        <div class="title"><h2>cooldown</h2></div>
+        <div class="inscription">
+            <div class="gauche">
+                <form class="form">
+                     <div class="form1">
+                    <input id="nom" type="text" name="nom"  placeholder="Nom" required="required" autocomplete="off">
+                    <input id="prenom" type="text" name="prenom"  placeholder="Prenom" required="required" autocomplete="off">
+                    </div>
+                    <input id="email" type="email" name="email"  placeholder="Email" required="required" autocomplete="off">
+                    <input id="pseudo" type="text" name="pseudo"  placeholder="Pseudo" required="required" autocomplete="off">
+                    <input id="mdp" type="password" name="password"  placeholder="Mot de passe" required="required" autocomplete="off">
+                    <input id="cf_mdp" type="password" name="cf_password"  placeholder="Confirmer Mot de passe" required="required" autocomplete="off">
+                    <button onclick="traitement_Inscription()">S'INSCRIRE</button> <a href="login.html">Déjà un compte ?</a>
+                </form>
+            </div>
+            <div class="droite">
+                <div class="text">
+                    <h1> you have <br/> one hour </h1>
+                    <img src="ressources/logo_cooldown.svg" alt="logo">
+                    <h1 class="red">left</h1>
+                </div>
+            </div>
+        </div>
+    </div>  
+
+    <script src="js/inscription.js"></script> 
+    <script src="js/config.js"></script> 
+</body>
+</html>
